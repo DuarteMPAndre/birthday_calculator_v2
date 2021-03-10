@@ -8,6 +8,7 @@
 #
 #  (c) 2021 Duarte André
 
+#imports
 import tkinter as tk
 from tkinter import *
 import datetime
@@ -15,7 +16,15 @@ import datetime
 today = datetime.date.today()
 
 
+
+
+
+screen = Tk()
+screen.title("Birthday Calculator")
+
+
 def run():
+    global label
     name = name_storage.get()
     age = age_storage.get()
     birthday = birthday_storage.get()
@@ -25,38 +34,26 @@ def run():
     birthday_month = int(birthday_month)
     age = int(age)
     if birthday_month < today.month and birthday_day < today.day:
-        label = tk.Label(screen, text="")
-        label.grid(row=5, column=0)
         birthday_year = today.year - age
-        label = tk.Label(screen, text="Hello " + name + " you are " + str(age) + " years old. You were born in " + str(
-            birthday_year) + ".")
-        label.grid(row=5, column=0)
+        label.config(text="Hello " + name + " you are " + str(age) + " years old. You were born in " + str(birthday_year) + ".")
+
     elif birthday_month == today.month and birthday_day == today.day:
-        label = tk.Label(screen, text="")
-        label.grid(row=5, column=0)
+
         birthday_year = today.year - age
-        label = tk.Label(screen, text="Happy birthday " + name + " you are " + str(age) + " years old. You were born in " + str(birthday_year) + ".")
-        label.grid(row=5, column=0)
+        label.config(text="Happy birthday " + name + " you are " + str(age) + " years old. You were born in " + str(birthday_year) + ".")
+
     elif birthday_month > today.month:
-        label = tk.Label(screen, text="")
-        label.grid(row=5, column=0)
+
         birthday_year = today.year - 1 - age
-        label = tk.Label(screen, text="Hello " + name + " you are " + str(age) + " years old. You were born in " + str(
-            birthday_year) + ".")
-        label.grid(row=5, column=0)
+        label.config(text="Hello " + name + " you are " + str(age) + " years old. You were born in " + str(birthday_year) + ".")
+
     else:
-        label = tk.Label(screen, text="")
-        label.grid(row=5, column=0)
+
         birthday_year = today.year - age
-        label = tk.Label(screen, text="Hello " + name + " you are " + str(age) + " years old. You were born in " + str(
-            birthday_year) + ".")
-        label.grid(row=5, column=0)
+        label.config(text="Hello " + name + " you are " + str(age) + " years old. You were born in " + str(birthday_year) + ".")
 
-
-screen = Tk()
-screen.title("Birthday Calculator")
-
-
+label = tk.Label(screen, text="")
+label.grid(row=5, column=0)
 first_text = Label(text="Enter your name")
 first_text.grid(row=1, column=0)
 second_text = tk.Label(text="Enter your age")
